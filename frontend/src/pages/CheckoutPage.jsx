@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
+import { authFetch } from "../Utils/auth";
 import {useCart} from "../context/CartContext";
 
 function CheckoutPage() {
@@ -30,18 +31,15 @@ function CheckoutPage() {
         setLoading(true);
         setMessage("");
         try {
-            const res = await fetch(`${BASEURL}/api/orders/create/`, {
+            const res = await authFetch(`${BASEURL}/api/orders/create/`, {
                 method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                },
                 body: JSON.stringify(form),
             });
             const data = await res.json();
 
             if (res.ok) {
                 setMessage("order placed successfully!");
-                fetch(`${BASEURL}/api/cart/`)
+                await authFetch(`${BASEURL}/api/cart/`);
                 clearCart();
                 setTimeout(() => {
                     navigate("/");
