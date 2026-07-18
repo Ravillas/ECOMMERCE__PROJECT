@@ -1,6 +1,4 @@
-﻿# ECOMMERCE__PROJECT
-
- # 🛒 Ravilla's Cart - E-Commerce Web Application
+# 🛒 Ravilla's Cart - E-Commerce Web Application
 
 A full-stack E-Commerce web application built using **React**, **Django REST Framework**, and **PostgreSQL**. The application provides secure JWT authentication, shopping cart management, and order checkout functionality.
 
