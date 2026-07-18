@@ -1,71 +1,176 @@
-# 🛒 E-Commerce Web Application
+# 🛒 Ravilla's Cart - E-Commerce Web Application
 
-A full-stack E-Commerce web application built using **React, Django REST Framework, and PostgreSQL**. The application allows users to browse products, manage their shopping cart, securely log in using JWT authentication, and place orders.
-
----
-
-## 🚀 Features
-
-- User Registration & Login (JWT Authentication)
-- Product Listing
-- Product Details
-- Add to Cart
-- Update & Remove Cart Items
-- Checkout & Order Placement
-- PostgreSQL Database Integration
-- Responsive UI using Tailwind CSS
+A full-stack E-Commerce web application built using **React**, **Django REST Framework**, and **PostgreSQL**. The application provides secure JWT authentication, shopping cart management, and order checkout functionality.
 
 ---
 
-## 🛠️ Tech Stack
+# 📌 Features
 
-### Frontend
+### 👤 Authentication
+- User Registration
+- User Login
+- JWT Authentication
+- Protected Routes
+- Logout
+
+### 🛍️ Product Management
+- Display all products
+- Product Details page
+- Category-wise products
+- Product Images
+- Product Pricing
+
+### 🛒 Shopping Cart
+- Add products to cart
+- Remove products
+- Update product quantity
+- Cart Total Calculation
+- Persistent Cart
+
+### 📦 Checkout
+- Shipping Details
+- Payment Method Selection
+- Place Order
+- Order Creation
+- Clear Cart after Successful Order
+
+### ⚙ Backend
+- Django REST Framework
+- PostgreSQL Database
+- JWT Authentication
+- REST APIs
+- CORS Configuration
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
 - React.js
 - Vite
 - Tailwind CSS
+- React Router
+- Context API
 
-### Backend
+## Backend
+
 - Django
 - Django REST Framework
+- Simple JWT
 - PostgreSQL
-- JWT Authentication
+
+## Tools
+
+- Git
+- GitHub
+- VS Code
+- Thunder Client
 
 ---
 
-## 📂 Project Structure
+# 📂 Project Structure
 
 ```
-ECOMMERCE_PROJECT/
+ECOMMERCE_PROJECT
 │
-├── backend/
-├── frontend/
+├── backend
+│   ├── backend
+│   ├── store
+│   ├── manage.py
+│   └── requirements.txt
+│
+├── frontend
+│   ├── src
+│   ├── public
+│   ├── package.json
+│   └── vite.config.js
+│
 └── README.md
 ```
 
 ---
 
-## ⚙️ How to Run the Project
+# ⚙ Installation
 
-### 1. Clone the Repository
+## 1. Clone Repository
 
 ```bash
-git clone <your-github-repository-link>
+git clone https://github.com/Ravillas/ECOMMERCE_PROJECT.git
+```
+
+Go inside project
+
+```bash
 cd ECOMMERCE_PROJECT
 ```
 
-### 2. Backend Setup
+---
+
+## 2. Backend Setup
+
+Go to backend folder
 
 ```bash
 cd backend
+```
 
+Create virtual environment
+
+```bash
+python -m venv venv
+```
+
+Activate
+
+### Windows
+
+```bash
+venv\Scripts\activate
+```
+
+### Linux/Mac
+
+```bash
+source venv/bin/activate
+```
+
+Install packages
+
+```bash
 pip install -r requirements.txt
+```
 
+Create **.env**
+
+```env
+DB_NAME=ecommerce_db
+DB_USER=postgres
+DB_PASSWORD=your_password
+DB_HOST=localhost
+DB_PORT=5432
+```
+
+Run migrations
+
+```bash
+python manage.py makemigrations
 python manage.py migrate
+```
 
+Create admin
+
+```bash
+python manage.py createsuperuser
+```
+
+Run server
+
+```bash
 python manage.py runserver
 ```
 
-Backend will run at:
+Backend runs on
 
 ```
 http://127.0.0.1:8000
@@ -73,19 +178,33 @@ http://127.0.0.1:8000
 
 ---
 
-### 3. Frontend Setup
+## 3. Frontend Setup
 
-Open a new terminal.
+Open another terminal
 
 ```bash
 cd frontend
+```
 
+Install dependencies
+
+```bash
 npm install
+```
 
+Create **.env**
+
+```env
+VITE_DJANGO_BASE_URL=http://127.0.0.1:8000
+```
+
+Run
+
+```bash
 npm run dev
 ```
 
-Frontend will run at:
+Frontend runs on
 
 ```
 http://localhost:5173
@@ -93,49 +212,123 @@ http://localhost:5173
 
 ---
 
-## 📸 Screenshots
+# 🔐 Authentication
 
-### 🏠 Home Page
+JWT Authentication is implemented using:
 
-*(Add Screenshot Here)*
+- Access Token
+- Refresh Token
+- Bearer Authentication
 
----
-
-### 📦 Product Details
-
-*(Add Screenshot Here)*
+Tokens are stored in Local Storage.
 
 ---
 
-### 🛒 Shopping Cart
+# 📡 API Endpoints
 
-*(Add Screenshot Here)*
+## Authentication
+
+```
+POST /api/signup/
+POST /api/token/
+POST /api/token/refresh/
+```
+
+## Products
+
+```
+GET /api/products/
+GET /api/products/<id>/
+```
+
+## Categories
+
+```
+GET /api/categories/
+```
+
+## Cart
+
+```
+GET /api/cart/
+POST /api/cart/add/
+POST /api/cart/update/
+POST /api/cart/remove/
+```
+
+## Orders
+
+```
+POST /api/orders/create/
+```
 
 ---
 
-### 💳 Checkout Page
+# 📸 Screenshots
 
-*(Add Screenshot Here)*
+- Home Page
+- <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/0dc09f04-76aa-49fc-bfcf-922738c80e54" />
+
+- Product Details
+- <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/806cea29-7407-4df1-bcc3-8c73713b644f" />
+
+- Cart
+- <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/34b08b50-4eb3-4160-ac72-eaaa00b27857" />
+
+- Checkout
+- <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/33b6e1cb-b6ae-4dd7-921f-9077929c5694" />
+
+- 
+- Login
+- <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/1a76dfe8-2656-4f5a-9e11-b003f544a90d" />
+
+- Signup
+- <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/b6623c2a-818f-4a4d-9696-94435872f587" />
+
 
 ---
 
-### 🔑 Login Page
+# 🚀 Future Improvements
 
-*(Add Screenshot Here)*
-
----
-
-## 📌 Future Improvements
-
-- Online Payment Integration
+- Razorpay / Stripe Payment
 - Wishlist
-- Search & Filters
+- Search Products
+- Product Reviews
 - Order History
 - User Profile
-- Product Reviews
+- Admin Dashboard
+- Email Notifications
+- Product Filters
+- Pagination
 
 ---
 
-## 👨‍💻 Author
+# 📚 What I Learned
+
+- React Context API
+- React Router
+- JWT Authentication
+- Django REST Framework
+- PostgreSQL Integration
+- REST API Development
+- State Management
+- Protected Routes
+- CRUD Operations
+- Environment Variables
+- Git & GitHub
+
+---
+
+# 👨‍💻 Author
 
 **Ravilla Gopi**
+
+- GitHub: https://github.com/Ravillas
+
+- LinkedIn: https://linkedin.com/in/ravillagopi226/
+
+---
+
+# ⭐ If you like this project
+
+Give it a ⭐ on GitHub.
